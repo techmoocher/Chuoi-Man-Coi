@@ -9,7 +9,6 @@
 ******/
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Bốn Mầu Nhiệm
     const allMysteries = {
         "Sự Vui": {
             title: "Năm Sự Vui",
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 1. Các Kinh Nguyện khác ---
     const prayers = {
         "Dấu Thánh Giá": {
             title: "Dấu Thánh Giá",
@@ -110,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 2. Xử lý Modal ---
     const modalOverlay = document.getElementById('modal-overlay');
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const modalTitle = document.getElementById('modal-title');
@@ -119,6 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const dayOfWeek = new Date().getDay();
     const mysteryMap = [ "Sự Mừng", "Sự Vui", "Sự Thương", "Sự Mừng", "Sự Sáng", "Sự Thương", "Sự Vui" ];
     const todayMysteryName = mysteryMap[dayOfWeek];
+
+    const mysteryDisplay = document.getElementById('today-mystery-display');
+    if (mysteryDisplay) {
+        const fullMysteryTitle = allMysteries[todayMysteryName].title;
+        mysteryDisplay.innerHTML = `<b>Mầu Nhiệm hôm nay:</b> ${fullMysteryTitle}.`;
+    }
 
     function openModal(prayerKey) {
         let prayerData;
@@ -173,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modalOverlay) closeModal();
     });
 
-    // --- 3. Năm Mầu Nhiệm ---
     const decadesContainer = document.getElementById('decades-container');
     if (decadesContainer) {
         for (let i = 1; i <= 5; i++) {
@@ -245,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- 4. Timeline ---
     const timelineItems = document.querySelectorAll('#timeline li');
     const sections = document.querySelectorAll('.screen');
 
